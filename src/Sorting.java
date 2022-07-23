@@ -7,6 +7,22 @@
  */
 public class Sorting 
 {
+    /**
+    * Sorts the specified array of integers using the shell 
+    * sort algorithm
+    *
+    * @param data the array to be sorted
+    */
+    public static <T extends Comparable<T>> 
+	void selectionSort(T[] data)
+    {
+        
+    }
+
+
+
+
+
 	/**
 	 * Sorts the specified array of integers using the selection
 	 * sort algorithm.
