@@ -14,13 +14,22 @@ public class Sorting
     * @param data the array to be sorted
     */
     public static <T extends Comparable<T>> 
-	void selectionSort(T[] data)
+	void shellSort(T[] data)
     {
-        
+        for (int gap = data.length / 2; gap > 0; gap /= 2)
+        {
+            for (int i = gap; i < data.length; i += 1) 
+            {
+                int temp = data[i];
+                for (int j = i; j >= gap && data[j - gap] > temp; j -= gap)
+                {
+                    data[j] = data[j - gap];
+                    data[j-gap] = temp;
+                   
+                }
+            }
+        }
     }
-
-
-
 
 
 	/**
