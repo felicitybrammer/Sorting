@@ -26,6 +26,8 @@ public class Sorting
                 {
                     data[j] = data[j - gap];
                     data[j-gap] = temp;   
+                    System.out.println("A swap occurred");
+                    System.out.print(data);
                 }
             }
         }

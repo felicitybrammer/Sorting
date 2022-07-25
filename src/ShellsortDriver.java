@@ -8,16 +8,16 @@ public class ShellsortDriver {
             System.out.println("The array before shell sort: ");
             for (int i = 0; i < data.length; ++i) 
             {
-                System.out.println(data[i]);
+                System.out.print(data[i]);
             }
-
+            System.out.println():
+            
             Sorting.shellSort(data);
             
-
             System.out.println("The array after shell sort: ");
             for (Integer datum: data)
-                System.out.println(datum);
-                
+                System.out.print(datum);
+            System.out.println():   
         }
 
 }
