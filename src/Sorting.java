@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Sorting demonstrates sorting and searching on an array 
  * of objects.
@@ -26,8 +28,8 @@ public class Sorting
                 {
                     data[j] = data[j - gap];
                     data[j-gap] = temp;   
-                    System.out.println("A swap occurred");
-                    System.out.print(data);
+                    System.out.println("A swap occurred: ");
+					System.out.println(Arrays.toString(data));
                 }
             }
         }
