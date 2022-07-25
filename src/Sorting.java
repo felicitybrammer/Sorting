@@ -21,7 +21,7 @@ public class Sorting
         {
             for (int i = gap; i < data.length; i += 1) 
             {
-                int temp = data[i];
+                T temp = data[i];
                 for (int j = i; j >= gap && data[j - gap] > temp; j -= gap)
                 {
                     data[j] = data[j - gap];
