@@ -27,7 +27,7 @@ public class Sorting
                 for (int j = i; j >= gap && data[j - gap].compareTo(temp) > 0; j -= gap)
                 {
                     data[j] = data[j - gap];
-                    data[j-gap] = temp;   
+                    data[j - gap] = temp;   
                     System.out.println("A swap occurred: ");
 					System.out.println(Arrays.toString(data));
                 }
@@ -119,6 +119,16 @@ public class Sorting
 			}
 		}
 	}
+
+    /**
+	 * Sorts the specified array of objects using an optimized bubble sort
+	 * algorithm.
+	 *
+	 * @param data the array to be sorted
+	 */
+     public static <T extends Comparable<T>> 
+     void bubbleSort2(T[] data)
+     {}
 
 	/**
 	 * Sorts the specified array of objects using the quick sort algorithm.
