@@ -128,8 +128,25 @@ public class Sorting
 	 */
      public static <T extends Comparable<T>> 
      void bubbleSort2(T[] data)
-     {}
+     {
+        int position, scan;
+        boolean swapflag = true:
+        int iteration = 0;
 
+        while (swapflag) {
+            swapflag = false;
+            for (scan = 0; scan <= position - 1 - iteration; scan++)
+            {
+                if (data[scan].compareTo(data[scan + 1]) > 0)
+					swap(data, scan, scan + 1);
+                    System.out.println("A swap occurred: ");
+					System.out.println(Arrays.toString(data));
+            }
+            iteration++;
+        }
+     }
+
+                    
 	/**
 	 * Sorts the specified array of objects using the quick sort algorithm.
 	 * 
