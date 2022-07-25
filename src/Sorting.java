@@ -22,7 +22,7 @@ public class Sorting
             for (int i = gap; i < data.length; i += 1) 
             {
                 T temp = data[i];
-                for (int j = i; j >= gap && data[j - gap].compareTo(temp); j -= gap)
+                for (int j = i; j >= gap && data[j - gap].compareTo(temp) > 0; j -= gap)
                 {
                     data[j] = data[j - gap];
                     data[j-gap] = temp;   
