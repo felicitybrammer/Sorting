@@ -16,6 +16,7 @@ public class Sorting
     public static <T extends Comparable<T>> 
 	void shellSort(T[] data)
     {
+       
         for (int gap = data.length / 2; gap > 0; gap /= 2)
         {
             for (int i = gap; i < data.length; i += 1) 
@@ -24,8 +25,7 @@ public class Sorting
                 for (int j = i; j >= gap && data[j - gap] > temp; j -= gap)
                 {
                     data[j] = data[j - gap];
-                    data[j-gap] = temp;
-                   
+                    data[j-gap] = temp;   
                 }
             }
         }

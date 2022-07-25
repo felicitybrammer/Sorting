@@ -1,17 +1,23 @@
 public class ShellsortDriver {
 
+    
     public static void main(String[] args)
         {
-            Integer[] data = {12, 34, 54, 2, 3};
+            Integer[] data = new Integer[] {12, 34, 54, 2, 3};
             //int[] data = {9, 6, 8, 12, 3, 1, 7};
             System.out.println("The array before shell sort: ");
-            printArr(data);
+            for (int i = 0; i < data.length; ++i) 
+            {
+                System.out.println(data[i]);
+            }
 
-            Shellsort shell = new Shellsort();
-            shell.shellSort(data);
+            Sorting.shellSort(data);
+            
 
             System.out.println("The array after shell sort: ");
-            printArr(data);
+            for (Integer datum: data)
+                System.out.println(datum);
+                
         }
 
 }

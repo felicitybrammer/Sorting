@@ -8,7 +8,7 @@
 public class Shellsort
 {
     /* utility function to print array of size n */
-    static void printArr( int data [])
+    static void printArr( T data [])
     {
         int n = data.length;
         for (int i = 0; i < n; ++i)
