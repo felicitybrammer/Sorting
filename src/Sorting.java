@@ -109,7 +109,7 @@ public class Sorting
 	void bubbleSort(T[] data)
 	{
 		int position, scan;
-
+		//position represents the max index to examine in the inner loop
 		for (position =  data.length - 1; position >= 0; position--)
 		{
 			for (scan = 0; scan <= position - 1; scan++)
@@ -129,21 +129,35 @@ public class Sorting
      public static <T extends Comparable<T>> 
      void bubbleSort2(T[] data)
      {
-        int position, scan;
-        boolean swapflag = true:
-        int iteration = 0;
+		
+        boolean swapflag = true;
+		int swapCount = 0;
+		int scan;
+		int position = data.length - 1;
 
-        while (swapflag) {
-            swapflag = false;
-            for (scan = 0; scan <= position - 1 - iteration; scan++)
-            {
-                if (data[scan].compareTo(data[scan + 1]) > 0)
+		while (swapflag) {
+
+
+			swapflag = false; //set flag to false awaiting a possible swap
+			
+			for (scan = 0; scan < position; scan++)
+			{
+				if (data[scan].compareTo(data[scan + 1]) > 0) {
 					swap(data, scan, scan + 1);
-                    System.out.println("A swap occurred: ");
-					System.out.println(Arrays.toString(data));
-            }
-            iteration++;
-        }
+					swapCount++;
+					swapflag = true;
+					System.out.println("A swap occurred: ");
+					System.out.println("Number of swaps: " + swapCount);
+ 					System.out.println(Arrays.toString(data));
+			}
+				position--;
+		}
+
+		System.out.println("End of Pass");
+//		System.out.println(Arrays.toString(data));
+//		System.out.println(swapCount);
+		}
+		
      }
 
                     
@@ -166,7 +180,7 @@ public class Sorting
 	 * @param min  the minimum index in the range to be sorted
 	 * @param max  the maximum index in the range to be sorted
 	 */
-	private static <T extends Comparable<T>> 
+	public static <T extends Comparable<T>> 
 	void quickSort(T[] data, int min, int max)
 	{
 		if (min < max)
@@ -182,6 +196,7 @@ public class Sorting
 		}
 	}
 
+	
 	/**
 	 * Used by the quick sort algorithm to find the partition.
 	 * 

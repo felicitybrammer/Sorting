@@ -23,6 +23,7 @@ public class Bubblesort2Driver {
             System.out.println();
             
             Sorting.bubbleSort2(data);
+
             
             System.out.println("Random array after bubble2 sort: ");
             System.out.println(Arrays.toString(data));
