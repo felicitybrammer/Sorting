@@ -116,6 +116,7 @@ public class Sorting
 			{
 				if (data[scan].compareTo(data[scan + 1]) > 0)
 					swap(data, scan, scan + 1);
+					System.out.println(Arrays.toString(data));
 			}
 		}
 	}

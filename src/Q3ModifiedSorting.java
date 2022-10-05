@@ -4,10 +4,8 @@ import java.util.Arrays;
  * Sorting demonstrates sorting and searching on an array 
  * of objects.
  *
- * @author Java Foundations
- * @version 4.0 
  */
-public class Sorting 
+public class Q3ModifiedSorting
 {
     /**
     * Sorts the specified array of integers using the shell 
@@ -15,49 +13,37 @@ public class Sorting
     *
     * @param data the array to be sorted
     */
+
+
     public static <T extends Comparable<T>> 
 	void shellSort(T[] data)
     {
-       
+
+
+        int swapCount = 0;
+		int compareCount = 0;
+
+
         for (int gap = data.length / 2; gap > 0; gap /= 2)
         {
             for (int i = gap; i < data.length; i += 1) 
             {
+				compareCount++;
                 T temp = data[i];
                 for (int j = i; j >= gap && data[j - gap].compareTo(temp) > 0; j -= gap)
                 {
                     data[j] = data[j - gap];
                     data[j - gap] = temp;   
-                    System.out.println("A swap occurred: ");
-					System.out.println(Arrays.toString(data));
+                    swapCount++;
+                    // System.out.println("A swap occurred: ");
+					// System.out.println(Arrays.toString(data));
                 }
             }
         }
+
+        System.out.println("Total swap count: " + swapCount);
+        System.out.println("Total compare count: " + compareCount);
     }
-
-
-	/**
-	 * Sorts the specified array of integers using the selection
-	 * sort algorithm.
-	 *
-	 * @param data the array to be sorted
-	 */
-	public static <T extends Comparable<T>> 
-	void selectionSort(T[] data)
-	{
-		int min;
-		T temp;
-
-		for (int index = 0; index < data.length - 1; index++)
-		{
-			min = index;
-			for (int scan = index + 1; scan < data.length; scan++)
-				if (data[scan].compareTo(data[min]) < 0)
-					min = scan;
-
-			swap(data, min, index);
-		}
-	}
 
 	/**
 	 * Swaps to elements in an array. Used by various sorting algorithms.
@@ -75,31 +61,6 @@ public class Sorting
 	}
 
 	/**
-	 * Sorts the specified array of objects using an insertion
-	 * sort algorithm.
-	 *
-	 * @param data the array to be sorted
-	 */
-	public static <T extends Comparable<T>> 
-	void insertionSort(T[] data)
-	{
-		for (int index = 1; index < data.length; index++)
-		{
-			T key = data[index];
-			int position = index;
-
-			// shift larger values to the right 
-			while (position > 0 && data[position-1].compareTo(key) > 0)
-			{
-				data[position] = data[position - 1];
-				position--;
-			}
-
-			data[position] = key;
-		}
-	}
-
-	/**
 	 * Sorts the specified array of objects using a bubble sort
 	 * algorithm.
 	 *
@@ -109,15 +70,24 @@ public class Sorting
 	void bubbleSort(T[] data)
 	{
 		int position, scan;
+		int swapCount = 0;
+		int compareCount = 0;
 		//position represents the max index to examine in the inner loop
 		for (position =  data.length - 1; position >= 0; position--)
 		{
+
 			for (scan = 0; scan <= position - 1; scan++)
 			{
-				if (data[scan].compareTo(data[scan + 1]) > 0)
+				compareCount++;
+				if (data[scan].compareTo(data[scan + 1]) > 0) {
 					swap(data, scan, scan + 1);
+					swapCount++;
+				}
 			}
+
 		}
+		System.out.println("Total swap count: " + swapCount);
+		System.out.println("Total compare count: " + compareCount);
 	}
 
     /**
@@ -132,6 +102,7 @@ public class Sorting
 
         boolean swapflag = true;
 		int swapCount = 0;
+		int compareCount = 0;
 		int scan;
 		int position = data.length - 1;
 
@@ -142,192 +113,28 @@ public class Sorting
 			
 			for (scan = 0; scan < position; scan++)
 			{
+				compareCount++;
 				if (data[scan].compareTo(data[scan + 1]) > 0) {
 					swap(data, scan, scan + 1);
 					swapCount++;
 					swapflag = true;
-					System.out.println("A swap occurred: ");
-					System.out.println("Number of swaps: " + swapCount);
- 					System.out.println(Arrays.toString(data));
+					// System.out.println("A swap occurred: ");
+					// System.out.println("Number of swaps: " + swapCount);
+ 					// System.out.println(Arrays.toString(data));
 			}
 				position--;
 		}
 
-		System.out.println("No more swaps");
-		System.out.println(Arrays.toString(data));
-		System.out.println(swapCount);
+		// System.out.println("No more swaps");
+		// System.out.println(Arrays.toString(data));
+		//System.out.println("Number of swaps: " + swapCount);
 		}
-		
+		 System.out.println("Total swap count: " + swapCount);
+		 System.out.println("Total compare count: " + compareCount);
      }
 
                     
-	/**
-	 * Sorts the specified array of objects using the quick sort algorithm.
-	 * 
-	 * @param data the array to be sorted
-	 */
-	public static <T extends Comparable<T>> 
-	void quickSort(T[] data)
-	{
-		quickSort(data, 0, data.length - 1);
-	}
 
-	/**
-	 * Recursively sorts a range of objects in the specified array using the
-	 * quick sort algorithm. 
-	 * 
-	 * @param data the array to be sorted
-	 * @param min  the minimum index in the range to be sorted
-	 * @param max  the maximum index in the range to be sorted
-	 */
-	public static <T extends Comparable<T>> 
-	void quickSort(T[] data, int min, int max)
-	{
-		if (min < max)
-		{
-			// create partitions
-			int indexofpartition = partition(data, min, max);
-
-			// sort the left partition (lower values)
-			quickSort(data, min, indexofpartition - 1);
-
-			// sort the right partition (higher values)
-			quickSort(data, indexofpartition + 1, max);
-		}
-	}
-
-	
-	/**
-	 * Used by the quick sort algorithm to find the partition.
-	 * 
-	 * @param data the array to be sorted
-	 * @param min  the minimum index in the range to be sorted
-	 * @param max  the maximum index in the range to be sorted
-	 */
-	private static <T extends Comparable<T>> 
-	int partition(T[] data, int min, int max)
-	{
-		T partitionelement;
-		int left, right;
-		int middle = (min + max) / 2;
-
-		// use the middle data value as the partition element
-		partitionelement = data[middle];
-		
-		// move it out of the way for now
-		swap(data, middle, min);
-
-		left = min;
-		right = max;
-
-		while (left < right)
-		{
-			// search for an element that is > the partition element
-			while (left < right && data[left].compareTo(partitionelement) <= 0)
-				left++;
-
-			// search for an element that is < the partition element
-			while (data[right].compareTo(partitionelement) > 0)
-				right--;
-
-			// swap the elements
-			if (left < right)
-				swap(data, left, right);
-		}
-
-		// move the partition element into place
-		swap(data, min, right);
-
-		return right;
-	}
-	
-	/**
-	 * Sorts the specified array of objects using the merge sort
-	 * algorithm.
-	 *
-	 * @param data the array to be sorted
-	 */
-	public static <T extends Comparable<T>>
-	void mergeSort(T[] data)
-	{
-		mergeSort(data, 0, data.length - 1);
-	}
-
-	/**
-	 * Recursively sorts a range of objects in the specified array using the
-	 * merge sort algorithm.
-	 *
-	 * @param data the array to be sorted
-	 * @param min  the index of the first element 
-	 * @param max  the index of the last element
-	 */
-	private static <T extends Comparable<T>>
-	void mergeSort(T[] data, int min, int max)
-	{
-		if (min < max)
-		{
-			int mid = (min + max) / 2;
-			mergeSort(data, min, mid);
-			mergeSort(data, mid + 1, max);
-			merge(data, min, mid, max);
-		}
-	}
-
-	/**
-	 * Merges two sorted subarrays of the specified array.
-	 *
-	 * @param data the array to be sorted
-	 * @param first the beginning index of the first subarray 
-	 * @param mid the ending index fo the first subarray
-	 * @param last the ending index of the second subarray
-	 */
-	@SuppressWarnings("unchecked")
-	private static <T extends Comparable<T>>
-	void merge(T[] data, int first, int mid, int last)
-	{
-		T[] temp = (T[])(new Comparable[data.length]);
-
-		int first1 = first, last1 = mid;  // endpoints of first subarray
-		int first2 = mid + 1, last2 = last;  // endpoints of second subarray
-		int index = first1;  // next index open in temp array
-
-		//  Copy smaller item from each subarray into temp until one
-		//  of the subarrays is exhausted
-		while (first1 <= last1 && first2 <= last2)
-		{
-			if (data[first1].compareTo(data[first2]) < 0)
-			{
-				temp[index] = data[first1];
-				first1++;
-			}
-			else
-			{
-				temp[index] = data[first2];
-				first2++;
-			}
-			index++;
-		}
-
-		//  Copy remaining elements from first subarray, if any
-		while (first1 <= last1)
-		{
-			temp[index] = data[first1];
-			first1++;
-			index++;
-		}
-
-		//  Copy remaining elements from second subarray, if any
-		while (first2 <= last2)
-		{
-			temp[index] = data[first2];
-			first2++;
-			index++;
-		}
-
-		//  Copy merged data into original array
-		for (index = first; index <= last; index++)
-			data[index] = temp[index];
-	}
 
 }
 

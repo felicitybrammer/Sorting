@@ -35,7 +35,7 @@ public class Bubblesort2Driver {
             
             Sorting.bubbleSort2(sorted);
             
-            System.out.println("Sorted array after shell sort: ");
+            System.out.println("Sorted array after bubble2 sort: ");
             System.out.println(Arrays.toString(sorted));
             System.out.println();
         }
